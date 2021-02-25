@@ -32,8 +32,12 @@
 
     <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
+
+        {% include 'includes/header.html' %}
         {% block banner %}{% endblock banner %}
         {% block content %}{% endblock content %}
+
+        {% include 'includes/footer.html' %}
 
         {# Global javascript #}
         <script type="text/javascript" src="{% static 'js/willowsun.js' %}"></script>
