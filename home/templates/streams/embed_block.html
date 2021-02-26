@@ -1,0 +1,14 @@
+<br>
+<div class="container bg-light">
+<br>
+<div class="embed-responsive embed-responsive-16by9 offset-md-2">
+    <iframe class="embed-responsive-item" width=837 height=470 src="{{ self.video.url }}"
+        allowfullscreen>
+    </iframe>
+    {% if self.caption %}
+        <p>{{ self.caption }}</p>
+    {% endif %}
+</div>
+
+<br>
+</div>
