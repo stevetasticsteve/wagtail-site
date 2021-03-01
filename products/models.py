@@ -47,8 +47,6 @@ class ProductCategory(models.Model):
         ImageChooserPanel('product_category_image')
     ]
 
-    # todo If a category changes name the page won't change name with it, this only runs 
-    # when a brand new category is added
     def save(self, *args, **kwargs):
         super(ProductCategory, self).save(*args, **kwargs)
 
@@ -110,8 +108,6 @@ class Product(models.Model):
     def __str__(self):
         return f'{self.product_name}, costing £{self.price}'
 
-    # todo If a prdocut changes name the page won't change name with it, this only runs
-    # when a brand new product is added
     def save(self, *args, **kwargs):
         super(Product, self).save(*args, **kwargs)
 
@@ -136,11 +132,20 @@ class Product(models.Model):
 class ProductParentPage(Page):
     """An empty page to simply serve to organise all products under one heading."""
     template = '404.html'
+    # pages are auto generated don't allow the user access
+    parent_page_types = []
+    sub_page_types = []
+    max_count = 1
 
 
 class ProductPage(Page):
     """A detail page for an individial product"""
     template = 'products/product_page.html'
+
+    # pages are auto generated don't allow the user access
+    parent_page_types = []
+    sub_page_types = []
+
     product = models.ForeignKey(
         'Product',
         on_delete=models.SET_NULL,
@@ -152,6 +157,11 @@ class ProductPage(Page):
 class ProductCategoryPage(Page):
     """A page that serves as a list view for a product category."""
     template = 'products/product_category_page.html'
+
+    # pages are auto generated don't allow the user access
+    parent_page_types = []
+    sub_page_types = []
+
     category = models.ForeignKey(
         'ProductCategory',
         on_delete=models.SET_NULL,

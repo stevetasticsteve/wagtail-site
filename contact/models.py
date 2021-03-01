@@ -40,6 +40,7 @@ class FormField(CustomAbstractFormField):
 class ContactPage(AbstractEmailForm):
     template = "contact/contact_page.html"
     landing_page_template = "contact/contact_page_landing.html"
+    parent_page_types = ["home.HomePage"]
     subpage_types = []
     max_count = 1
 

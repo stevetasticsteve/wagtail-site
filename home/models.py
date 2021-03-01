@@ -8,6 +8,7 @@ from products.models import ProductCategory
 
 
 class HomePage(Page):
+    parent_page_types = ["wagtailcore.Page"]
     lead_text = models.CharField(
         max_length=140,
         blank=True,
