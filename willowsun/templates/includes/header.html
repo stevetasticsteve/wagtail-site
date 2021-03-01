@@ -1,11 +1,16 @@
-{% load static menu_tags %}
+{% load menu_tags wagtailimages_tags %}
 {% get_menu "header" as navigation %}
 
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
+    <div class="container-fluid"> 
         <a class="navbar-brand" href="/">
-            <img src="{% static 'images/Original on Transparent.png' %}" alt="logo" width="100" height="85">
+            {% if settings.site_settings.GlobalSiteSettings.logo %}
+            {% image settings.site_settings.GlobalSiteSettings.logo fill-100x80 as logo %}
+            <img src="{{ logo.url }}" alt="{{ logo.alt }}"width="100" height="88">
+            {% else %}
+            <img src="http://www.norrislakemarinas.org/wp-content/themes/norris/img/logo_placeholder.png" alt="placeholder_logo" width="100" height="85">
+            {% endif %}
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
