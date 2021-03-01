@@ -27,7 +27,12 @@
             </div>
         </div>
             <div class="text-center text-white p-3" style="background-color: rgb(94, 94, 94);">
-                © 2021 Copyright Willowsun
+                {% if settings.site_settings.GlobalSiteSettings.site_copyright %}
+                © {{settings.site_settings.GlobalSiteSettings.site_copyright}}
+                {% else %}
+                © 2021 Stephen Stanley
+
+                {% endif %}
             </div>
     </div>      
 
