@@ -4,7 +4,7 @@ from wagtail.core.models import Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.admin.edit_handlers import FieldPanel, PageChooserPanel
 
-from products.models import ProductCategory
+from products.models import ProductCategoryPage
 
 
 class HomePage(Page):
@@ -48,5 +48,6 @@ class HomePage(Page):
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
-        context['product_categories'] = ProductCategory.objects.all()
+        context['product_categories'] = ProductCategoryPage.objects.all().specific()
+        print(context['product_categories'])
         return context

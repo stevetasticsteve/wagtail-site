@@ -34,12 +34,12 @@ style="background-image: url('{{ bg_img.url }}');">
     {% for category in product_categories %}
     <div class="col-md-6 d-flex align-items-stretch">
         <div class="card mb-3 text-center">
-            {% image category.product_category_image fill-573x369 as card_img %}
+            {% image category.category.product_category_image fill-573x369 as card_img %}
             <img src="{{ card_img.url }}" alt="{{ card_img.alt }}" class="lazy card-img-top">
             <div class="card-body py-3 px-3">
-                <h5 class="card-title">{{ category.category_name }}</h5>
-                <p class="card-text">{{ category.descriptive_text }}</p>
-                <a href='{{ card.url }}' class="stretched-link btn btn-secondary">More details</a>
+                <h5 class="card-title">{{ category.category.category_name }}</h5>
+                <p class="card-text">{{ category.category.descriptive_text }}</p>
+                <a href='{{ category.url }}' class="stretched-link btn btn-secondary">More details</a>
             </div>
         </div>
     </div>
