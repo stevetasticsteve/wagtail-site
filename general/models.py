@@ -7,7 +7,7 @@ from . import blocks
 
 
 class GeneralPage(Page):
-    parent_page_types = ["home.HomePage", "GeneralPage"]
+    parent_page_types = ["home.HomePage", "general.GeneralPage"]
     body = StreamField([
         ('paragraph', blocks.ParagraphBlock()),
         ('text_and_image', blocks.TextImageBlock()),
