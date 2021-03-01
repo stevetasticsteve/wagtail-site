@@ -1,14 +1,18 @@
-{% load static %}
+{% load static menu_tags %}
+{% get_menu "header" as navigation %}
+
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/">
             <img src="{% static 'images/Original on Transparent.png' %}" alt="logo" width="100" height="85">
         </a>
         <div class="collapse navbar-collapse" id="navbarNav">
             <div class="navbar-nav">
-            {% for i in "123" %}
-                <a class="nav-link" href="#">Link {{ i }}</a>
+            {% for item in navigation.menu_items.all %}
+                <a class="nav-link" href="{{ item.link }}" {% if item.open_in_new_tab %}target="_blank" {% endif %}>
+                    {{ item.title }}
+                </a>
             {% endfor %}
             </div>
         </div>
