@@ -1,7 +1,4 @@
-import sentry_sdk
 import os
-
-from sentry_sdk.integrations.django import DjangoIntegration
 
 from .base import *
 
@@ -21,12 +18,15 @@ DATABASES = {
     }
 }
 
-#sentry_sdk.init(
- #   dsn="https://4f6615c480264665a3445c84e9886fdf@o538547.ingest.sentry.io/5656773",
-#    traces_sample_rate=1.0,
-#    integrations=[DjangoIntegration()],
-#)
+#import sentry_sdk
+#from sentry_sdk.integrations.django import DjangoIntegration
 
+#sentry_sdk.init(
+#    dsn="https://4f6615c480264665a3445c84e9886fdf@o538547.ingest.sentry.io/5656773",
+#    integrations=[DjangoIntegration()],
+#    traces_sample_rate=1.0,
+#    send_default_pii=True,
+#)
 
 try:
     from .local import *
