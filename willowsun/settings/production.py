@@ -22,7 +22,7 @@ DATABASES = {
 }
 
 sentry_sdk.init(
-    dsn="https: // 4f6615c480264665a3445c84e9886fdf@o538547.ingest.sentry.io/5656773",
+    dsn="https://4f6615c480264665a3445c84e9886fdf@o538547.ingest.sentry.io/5656773",
     traces_sample_rate=1.0,
     integrations=[DjangoIntegration()],
 )
