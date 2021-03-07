@@ -3,6 +3,7 @@
 /static/
 *.sqlite3
 /assets/
+todo.md
 
 # Python and others
 __pycache__

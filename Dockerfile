@@ -36,6 +36,8 @@ WORKDIR /app
 # Set this directory to be owned by the "wagtail" user. This Wagtail project
 # uses SQLite, the folder needs to be owned by the user that
 # will be writing to the database file.
+RUN mkdir /app/media
+RUN chown wagtail:wagtail /app/media
 RUN chown wagtail:wagtail /app
 
 # Copy the source code of the project into the container.
