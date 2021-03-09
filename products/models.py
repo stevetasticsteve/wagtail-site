@@ -131,7 +131,7 @@ class Product(models.Model):
 
 class ProductParentPage(Page):
     """An empty page to simply serve to organise all products under one heading."""
-    template = '404.html'
+    template = 'home/home_page.html'
     # pages are auto generated don't allow the user access
     parent_page_types = []
     sub_page_types = []
