@@ -1,5 +1,7 @@
-{% load static menu_tags %}
-{% get_menu "header" as navigation %}
+{% load static %}
+{% load nav_tags wagtailcore_tags wagtailimages_tags %}
+
+{% get_menu_pages as menu %}
 
 <footer>
     <hr>
@@ -18,8 +20,8 @@
         <div class="row mx-lg-n3">
             <div class="px-lg-3 col-lg-3 col-md-6 col-sm-12 offset-2 my-4">
                 <div class="cc-footer-title"></div>
-                {% for item in navigation.menu_items.all %}
-                <a class="cc-footer-link-lg d-block text-white" href="{{ item.link }}" {% if item.open_in_new_tab %}target="_blank" {% endif %}>
+                {% for item in menu %}
+                <a class="cc-footer-link-lg d-block text-white" href="{% pageurl item %}" {% if item.open_in_new_tab %}target="_blank" {% endif %}>
                     {{ item.title }}
                 </a>
                 {% endfor %}

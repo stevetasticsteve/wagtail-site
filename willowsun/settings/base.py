@@ -29,7 +29,6 @@ INSTALLED_APPS = [
     'products',
     'general',
     'contact',
-    'menus',
     'site_settings',
 
     'wagtail.contrib.forms',
