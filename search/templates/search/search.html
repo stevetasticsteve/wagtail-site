@@ -6,14 +6,17 @@
 {% block title %}Search{% endblock %}
 
 {% block content %}
-    <h1>Search</h1>
-
-    <form action="{% url 'search' %}" method="get">
-        <input type="text" name="query"{% if search_query %} value="{{ search_query }}"{% endif %}>
-        <input type="submit" value="Search" class="button">
+    <form class="row g-3" action="{% url 'search' %}" method="get">
+        <div class="col-auto">
+            <input type="text" class="form-control" name="query" placeholder="search" {% if search_query %} value="{{ search_query }}"{% endif %}>
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-secondary mb-3">Search</button>
+        </div>
     </form>
 
     {% if search_results %}
+    <h2>Search results</h2>
         <ul>
             {% for result in search_results %}
                 <li>
