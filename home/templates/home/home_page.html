@@ -1,6 +1,5 @@
 {% extends "base.html" %}
-<!-- {% load static %} -->
-{% load wagtailimages_tags wagtailcore_tags %}
+{% load static wagtailimages_tags wagtailcore_tags %}
 
 
 {% block banner %}
@@ -30,6 +29,7 @@ style="background-image: url('{{ bg_img.url }}');">
     
 
 {% block content %}
+
 <div class="row mt-4">
     {% for category in product_categories %}
     <div class="col-md-6 d-flex align-items-stretch">
