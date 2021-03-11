@@ -3,7 +3,7 @@ from wagtail.core.models import Page
 from wagtail.core.fields import StreamField
 from wagtail.admin.edit_handlers import StreamFieldPanel
 
-from . import blocks
+from home import blocks
 
 
 class GeneralPage(Page):
