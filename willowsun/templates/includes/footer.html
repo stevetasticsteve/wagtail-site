@@ -21,7 +21,7 @@
             <div class="px-lg-3 col-lg-3 col-md-6 col-sm-12 offset-2 my-4">
                 <div class="cc-footer-title"></div>
                 {% for item in menu %}
-                <a class="cc-footer-link-lg d-block text-white" href="{% pageurl item %}" {% if item.open_in_new_tab %}target="_blank" {% endif %}>
+                <a class="footer-links d-block" href="{% pageurl item %}" {% if item.open_in_new_tab %}target="_blank" {% endif %}>
                     {{ item.title }}
                 </a>
                 {% endfor %}
