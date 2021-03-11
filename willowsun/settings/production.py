@@ -16,6 +16,8 @@ SECURE_SSL_REDIRECT = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SECURE_HSTS_SECONDS = 3600
 
+GOOGLE_API_KEY = os.environ.get('GOOGLE_API_KEY', '')
+
 DATABASES = {
     "default": {
         "ENGINE": 'django.db.backends.postgresql_psycopg2',

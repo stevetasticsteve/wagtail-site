@@ -5,6 +5,7 @@ from wagtail.documents.blocks import DocumentChooserBlock
 from wagtail.core.fields import StreamField
 from wagtail.core.models import Collection
 from django import forms
+from wagtail.contrib.table_block.blocks import TableBlock as WagtailTableBlock
 
 
 class ParagraphBlock(blocks.StructBlock):
@@ -157,6 +158,37 @@ class ImageGalleryBlock(blocks.StructBlock):
         help_text = 'Include an image gallery built from a collection of images. Collections are set in settings/collections'
 
 
+class TableBlock(blocks.StructBlock):
+    """
+    A simple table.
+    """
+    table = WagtailTableBlock()
+
+    class Meta:
+        template = 'streams/table_block.html'
+        icon = 'table'
+        label = 'Table'
+        help_text = 'Insert a table'
+
+
+class GoogleMapBlock(blocks.StructBlock):
+    """
+    An embedded Google map in an <iframe>.
+    """
+    search = blocks.CharBlock(
+        required=True,
+        max_length=255,
+        label='Location',
+        help_text='Address or search term used to find your location on the map.',
+    )
+
+    class Meta:
+        template = 'streams/google_map.html'
+        icon = 'map'
+        label = 'Google Map'
+        help_text = "Embed a Google map centered on the place specified."
+
+
 full_streamfield = StreamField([
     ('paragraph', ParagraphBlock()),
     ('text_and_image', TextImageBlock()),
@@ -164,4 +196,6 @@ full_streamfield = StreamField([
     ('download', DownloadBlock()),
     ('quote', QuoteBlock()),
     ('image_gallery', ImageGalleryBlock()),
+    ('table', TableBlock()),
+    ('map', GoogleMapBlock()),
 ], null=True, blank=True)

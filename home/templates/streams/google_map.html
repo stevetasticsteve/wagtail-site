@@ -1,0 +1,10 @@
+{% load custom_tags %}
+
+<div class="col-md-8">
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" width="600" height="450" style="border:0" loading="lazy"
+            src="https://www.google.com/maps/embed/v1/place?key={% settings_value 'GOOGLE_API_KEY' %}&zoom=16
+    &q={{ self.search|urlencode }}">
+            allowfullscreen></iframe>
+    </div>
+</div>

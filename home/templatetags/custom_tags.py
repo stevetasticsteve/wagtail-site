@@ -4,6 +4,7 @@ import random
 from django import template
 from wagtail.core.models import Collection
 from wagtail.images.models import Image
+from django.conf import settings
 
 register = template.Library()
 
@@ -19,3 +20,8 @@ def generate_random_id():
     value = ''.join(random.choice(string.ascii_letters + string.digits)
                     for n in range(20))
     return "cr-{}".format(value)
+
+
+@register.simple_tag
+def settings_value(name):
+    return getattr(settings, name, "")
