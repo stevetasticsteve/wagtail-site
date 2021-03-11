@@ -21,14 +21,14 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 {% for item in menu %}
                 
-                {% if item.get_children.live %}
+                {% if item.get_children.live.in_menu %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="{% pageurl item %}" role="button"
                             aria-expanded="false">
                             {{ item.title }}
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            {% for sub_page in item.get_children.live %}
+                            {% for sub_page in item.get_children.live.in_menu %}
                                 <li><a class="dropdown-item" href="{% pageurl sub_page %}">{{sub_page.title}}</a></li>
                             {% endfor %}
                         </ul>

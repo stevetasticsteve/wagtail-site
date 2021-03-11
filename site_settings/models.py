@@ -5,7 +5,6 @@ from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 
 
-
 @register_setting
 class GlobalSiteSettings(BaseSetting):
     logo = models.ForeignKey(
