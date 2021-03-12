@@ -5,7 +5,7 @@ import os
 from .base import *
 
 
-DEBUG = False
+DEBUG = os.environ.get('DEBUG', False)
 SECRET_KEY = os.environ.get('SECRET_KEY', '')
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(',')
 MEDIA_URL = os.path.join('media', os.environ.get('SITE_NAME', '') + '/')
