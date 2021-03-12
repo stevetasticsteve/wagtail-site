@@ -1,14 +1,13 @@
-<br>
-<div class="container bg-light">
-<br>
-<div class="embed-responsive embed-responsive-16by9 offset-md-2">
-    <iframe class="embed-responsive-item" width=837 height=470 src="{{ self.video.url }}"
-        allowfullscreen>
-    </iframe>
-    {% if self.caption %}
-        <p>{{ self.caption }}</p>
-    {% endif %}
-</div>
+{% load custom_tags %}
 
-<br>
+
+<div class="container bg-light my-2">
+    <div class="embed-responsive embed-responsive-16by9 offset-md-2 my-2">
+        <iframe class="embed-responsive-item" width=837 height=470 src="{{ self.video.url | embedurl}}?rel=0"
+            allowfullscreen>
+        </iframe>
+    </div>
+    {% if self.caption %}
+        <p class="offset-md-2">{{ self.caption }}</p>
+    {% endif %}
 </div>

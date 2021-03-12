@@ -8,6 +8,7 @@ from django import forms
 from wagtail.contrib.table_block.blocks import TableBlock as WagtailTableBlock
 from wagtailcodeblock.blocks import CodeBlock
 
+
 class ParagraphBlock(blocks.StructBlock):
     """
     Single column rich text block
