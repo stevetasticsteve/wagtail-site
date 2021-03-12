@@ -18,6 +18,14 @@ SECURE_HSTS_SECONDS = 3600
 
 GOOGLE_API_KEY = os.environ.get('GOOGLE_API_KEY', '')
 
+# Email
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', '')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
+EMAIL_HOST = os.environ.get('EMAIL_HOST', '')
+
 DATABASES = {
     "default": {
         "ENGINE": 'django.db.backends.postgresql_psycopg2',
