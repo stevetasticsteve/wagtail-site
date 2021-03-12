@@ -6,7 +6,7 @@ from wagtail.core.fields import StreamField
 from wagtail.core.models import Collection
 from django import forms
 from wagtail.contrib.table_block.blocks import TableBlock as WagtailTableBlock
-
+from wagtailcodeblock.blocks import CodeBlock
 
 class ParagraphBlock(blocks.StructBlock):
     """
@@ -196,6 +196,7 @@ class ColumnBlock(blocks.StructBlock):
         ('image_gallery', ImageGalleryBlock()),
         ('table', TableBlock()),
         ('map', GoogleMapBlock()),
+        ('code', CodeBlock()),
     )
 
     class Meta:
@@ -221,6 +222,7 @@ def single_column_blocks():
         ('image_gallery', ImageGalleryBlock()),
         ('table', TableBlock()),
         ('map', GoogleMapBlock()),
+        ('code', CodeBlock()),
     ]
     return single_column_blocks
 

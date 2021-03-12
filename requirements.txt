@@ -3,3 +3,4 @@ wagtail>=2.12,<2.13
 wagtailfontawesome>=1.2.1
 django-extensions==3.1.1
 django-widget-tweaks==1.4.8
+wagtailcodeblock>=1.17
