@@ -23,24 +23,6 @@ class ParagraphBlock(blocks.StructBlock):
         help_text = "Formatted text to make up paragraphs"
 
 
-class TextImageBlock(blocks.StructBlock):
-    """
-    A two column image and rich text block.
-    """
-    text = blocks.RichTextBlock(
-        help_text="Text to display"
-    )
-    image = ImageChooserBlock(
-        help_text="Image will be resized to 570x370px"
-    )
-
-    class Meta:
-        template = "streams/text_image_block.html"
-        icon = "code"
-        label = "Text and Image"
-        help_text = "Image on the left, text on the right"
-
-
 class VideoBlock(blocks.StructBlock):
     """
     An embeddable video block.
@@ -220,7 +202,6 @@ def single_column_blocks():
     single_column_blocks = [
         ('column_block', ColumnBlock()),
         ('paragraph', ParagraphBlock()),
-        ('text_and_image', TextImageBlock()),
         ('video', VideoBlock()),
         ('download', DownloadBlock()),
         ('quote', QuoteBlock()),
