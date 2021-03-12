@@ -184,7 +184,7 @@ class GoogleMapBlock(blocks.StructBlock):
 
     class Meta:
         template = 'streams/google_map.html'
-        icon = 'map'
+        icon = 'fa-map'
         label = 'Google Map'
         help_text = "Embed a Google map centered on the place specified."
 
