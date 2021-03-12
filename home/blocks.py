@@ -23,6 +23,17 @@ class ParagraphBlock(blocks.StructBlock):
         help_text = "Formatted text to make up paragraphs"
 
 
+class ImageBlock(ImageChooserBlock):
+    """
+    Upload an image.
+    """
+    class Meta:
+        template = "streams/image_block.html"
+        icon = "fa-picture-o"
+        label = "Image"
+        help_text = "Upload an image. Will be centered with a border"
+
+
 class VideoBlock(blocks.StructBlock):
     """
     An embeddable video block.
@@ -178,6 +189,7 @@ class ColumnBlock(blocks.StructBlock):
     # todo coudn't find a way to avoid circular name errors, so copy pasted here
     local_blocks = (
         ('paragraph', ParagraphBlock()),
+        ('image', ImageBlock()),
         ('video', VideoBlock()),
         ('download', DownloadBlock()),
         ('quote', QuoteBlock()),
@@ -202,6 +214,7 @@ def single_column_blocks():
     single_column_blocks = [
         ('column_block', ColumnBlock()),
         ('paragraph', ParagraphBlock()),
+        ('image', ImageBlock()),
         ('video', VideoBlock()),
         ('download', DownloadBlock()),
         ('quote', QuoteBlock()),

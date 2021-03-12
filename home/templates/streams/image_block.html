@@ -1,0 +1,7 @@
+{% load wagtailimages_tags %}
+
+{% image self max-1000x1000 as image %}
+
+
+<img class="img-thumbnail rounded mx-auto d-block" src="{{image.url}}" class="w-100"  alt="{{image.title}}">
+
