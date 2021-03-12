@@ -189,13 +189,46 @@ class GoogleMapBlock(blocks.StructBlock):
         help_text = "Embed a Google map centered on the place specified."
 
 
-full_streamfield = StreamField([
-    ('paragraph', ParagraphBlock()),
-    ('text_and_image', TextImageBlock()),
-    ('video', VideoBlock()),
-    ('download', DownloadBlock()),
-    ('quote', QuoteBlock()),
-    ('image_gallery', ImageGalleryBlock()),
-    ('table', TableBlock()),
-    ('map', GoogleMapBlock()),
-], null=True, blank=True)
+class ColumnBlock(blocks.StructBlock):
+    """
+    Renders a row of md-6 columns.
+    """
+    # todo coudn't find a way to avoid circular name errors, so copy pasted here
+    local_blocks = (
+        ('paragraph', ParagraphBlock()),
+        ('video', VideoBlock()),
+        ('download', DownloadBlock()),
+        ('quote', QuoteBlock()),
+        ('image_gallery', ImageGalleryBlock()),
+        ('table', TableBlock()),
+        ('map', GoogleMapBlock()),
+    )
+
+    class Meta:
+        template = 'streams/two_column_block.html'
+        icon = 'fa-columns'
+        label = '2 Column block'
+
+    def __init__(self, local_blocks=local_blocks, min_num=2, max_num=2, **kwargs):
+        local_blocks = (('content', blocks.StreamBlock(
+            local_blocks, label='Content')),)
+        super().__init__(local_blocks,)
+
+
+def single_column_blocks():
+    """Function to return all block types suitable for full width"""
+    single_column_blocks = [
+        ('column_block', ColumnBlock()),
+        ('paragraph', ParagraphBlock()),
+        ('text_and_image', TextImageBlock()),
+        ('video', VideoBlock()),
+        ('download', DownloadBlock()),
+        ('quote', QuoteBlock()),
+        ('image_gallery', ImageGalleryBlock()),
+        ('table', TableBlock()),
+        ('map', GoogleMapBlock()),
+    ]
+    return single_column_blocks
+
+
+full_streamfield = StreamField(single_column_blocks(), null=True, blank=True)

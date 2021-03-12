@@ -1,0 +1,16 @@
+{% load wagtailcore_tags %}
+
+<div class="container">
+
+    {% block grid_content %}
+    <div class="row md-6">
+        {% for column in self.content %}
+        <div class="col-md-6">
+        {% include_block column %}
+        </div>
+        {% endfor %}
+        
+    </div>
+    {% endblock %}
+
+</div>
