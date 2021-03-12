@@ -49,4 +49,4 @@ USER wagtail
 # Collect static files.
 RUN python manage.py collectstatic --noinput --clear
 
-CMD exec gunicorn --bind 0.0.0.0:8000 --workers 1 --threads 8 --timeout 0 willowsun.wsgi:application
+CMD exec gunicorn --bind 0.0.0.0:8000 --workers 1 --threads 8 --timeout 0 config.wsgi:application
