@@ -218,10 +218,11 @@ class ColumnBlock(blocks.StructBlock):
         template = 'streams/two_column_block.html'
         icon = 'fa-columns'
         label = '2 Column block'
+        help_text = 'The first block will go on the left.'
 
-    def __init__(self, local_blocks=local_blocks, min_num=2, max_num=2, **kwargs):
+    def __init__(self, local_blocks=local_blocks):
         local_blocks = (('content', blocks.StreamBlock(
-            local_blocks, label='Content')),)
+            local_blocks, label='Select two columns.', min_num=2, max_num=2)), )
         super().__init__(local_blocks,)
 
 
