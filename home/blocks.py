@@ -14,7 +14,8 @@ class ParagraphBlock(blocks.StructBlock):
     Single column rich text block
     """
     text = blocks.RichTextBlock(
-        help_text="Text to display"
+        help_text="Text to display",
+        features=["bold", "italic", 'h2', 'h3', 'h4', "ol", "ul", 'strikethrough', "link", 'document-link', 'hr']
     )
 
     class Meta:
