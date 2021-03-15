@@ -48,6 +48,20 @@ class VideoBlock(blocks.StructBlock):
         required=False,
         help_text="Optional caption for video")
 
+    # custom init so column can be passed to template
+    def __init__(self, required=False, label=None, help_text=None, *args, **kwargs):
+        print(kwargs)
+        self._required = required
+        self._help_text = help_text
+        self._label = label
+        self.column = kwargs.get('column')
+        super().__init__(*args, **kwargs)
+
+    def get_context(self, value, parent_context=None):
+        ctx = super().get_context(value, parent_context=parent_context)
+        ctx['column'] = self.column
+        return ctx
+
     class Meta:
         template = "streams/embed_block.html"
         icon = "media"
@@ -192,7 +206,7 @@ class ColumnBlock(blocks.StructBlock):
     local_blocks = (
         ('paragraph', ParagraphBlock()),
         ('image', ImageBlock()),
-        ('video', VideoBlock()),
+        ('video', VideoBlock(column='2')),
         ('download', DownloadBlock()),
         ('quote', QuoteBlock()),
         ('image_gallery', ImageGalleryBlock()),
@@ -218,7 +232,7 @@ def single_column_blocks():
         ('column_block', ColumnBlock()),
         ('paragraph', ParagraphBlock()),
         ('image', ImageBlock()),
-        ('video', VideoBlock()),
+        ('video', VideoBlock(column='1')),
         ('download', DownloadBlock()),
         ('quote', QuoteBlock()),
         ('image_gallery', ImageGalleryBlock()),
