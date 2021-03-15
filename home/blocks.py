@@ -50,7 +50,6 @@ class VideoBlock(blocks.StructBlock):
 
     # custom init so column can be passed to template
     def __init__(self, required=False, label=None, help_text=None, *args, **kwargs):
-        print(kwargs)
         self._required = required
         self._help_text = help_text
         self._label = label
