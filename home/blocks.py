@@ -15,7 +15,8 @@ class ParagraphBlock(blocks.StructBlock):
     """
     text = blocks.RichTextBlock(
         help_text="Text to display",
-        features=["bold", "italic", 'h2', 'h3', 'h4', "ol", "ul", 'strikethrough', "link", 'document-link', 'hr']
+        features=["bold", "italic", 'h2', 'h3', 'h4', "ol",
+                  "ul", 'strikethrough', "link", 'document-link', 'hr']
     )
 
     class Meta:
@@ -197,6 +198,55 @@ class GoogleMapBlock(blocks.StructBlock):
         help_text = "Embed a Google map centered on the place specified."
 
 
+class CardBlock(blocks.StructBlock):
+    link = blocks.PageChooserBlock(
+        help_text="Page to link to",
+    )
+    card_header = blocks.CharBlock(
+        max_length=30,
+        default="",
+        help_text="Title for card",
+    )
+    card_text = blocks.TextBlock(
+        max_length=400,
+        help_text="Short desription of page.",
+    )
+    button_text = blocks.CharBlock(
+        max_length=20,
+        required=False,
+        default='View',
+        help_text="Text to appear on link button",
+    )
+    card_image = ImageChooserBlock(
+        help_text="Image to display"
+    )
+
+    class Meta:
+        template = 'streams/card.html'
+        icon = 'fa-id-card-o'
+        label = 'Card link'
+        help_text = "Create a card to link to another page."
+
+
+class CardGroupBlock(blocks.StructBlock):
+    card_group_heading = blocks.CharBlock(
+        required=False,
+        max_length=50,
+        help_text='Optional title for the card group.'
+    )
+
+    class Meta:
+        template = 'streams/card_group.html'
+        icon = 'fa-th-large'
+        label = 'Card grid'
+        help_text = 'Add one or more cards that link to other pages.'
+
+    def __init__(self, local_blocks=[('Card', CardBlock())]):
+        local_blocks = (('content', blocks.StreamBlock(
+            local_blocks, label='Add cards. Minimum of 1.', min_num=1)), )
+        super().__init__(local_blocks,)
+
+
 class ColumnBlock(blocks.StructBlock):
     """
     Renders a row of md-6 columns.
@@ -212,6 +262,8 @@ class ColumnBlock(blocks.StructBlock):
         ('table', TableBlock()),
         ('map', GoogleMapBlock()),
         ('code', CodeBlock()),
+        ('card_group', CardGroupBlock()), # todo This looks naff
+
     )
 
     class Meta:
@@ -222,7 +274,7 @@ class ColumnBlock(blocks.StructBlock):
 
     def __init__(self, local_blocks=local_blocks):
         local_blocks = (('content', blocks.StreamBlock(
-            local_blocks, label='Select two columns.', min_num=2, max_num=2)), )
+            local_blocks, label='Select two columns.', min_num=2, max_num=2)),)
         super().__init__(local_blocks,)
 
 
@@ -239,6 +291,7 @@ def single_column_blocks():
         ('table', TableBlock()),
         ('map', GoogleMapBlock()),
         ('code', CodeBlock()),
+        ('card_group', CardGroupBlock()),
     ]
     return single_column_blocks
 
