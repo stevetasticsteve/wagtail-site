@@ -21,8 +21,15 @@ class GlobalSiteSettings(BaseSetting):
         blank=True,
         help_text="The copyright owner to be displayed on the site footer. Don't enter the © symbol"
     )
+    disqus_site_name = models.CharField(
+        max_length=50,
+        blank=True,
+        null=True,
+        help_text="Write a valid disqus shortname here to enable comments on the site. https://disqus.com/"
+    )
 
     panels = [
         ImageChooserPanel('logo'),
         FieldPanel('site_copyright'),
+        FieldPanel('disqus_site_name'),
     ]

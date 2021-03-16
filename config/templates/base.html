@@ -37,6 +37,10 @@
         
         <main id="content" class="container my-4" role="main">
         {% block content %}{% endblock content %}
+        {% if settings.site_settings.GlobalSiteSettings.disqus_site_name %}
+            {% include 'includes/disqus.html' %}
+        {% endif %}
+            
         </main>
 
         {% include 'includes/footer.html' %}
