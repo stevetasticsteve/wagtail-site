@@ -27,7 +27,6 @@ INSTALLED_APPS = [
     'home',
     'search',
     'products',
-    'general',
     'contact',
     'site_settings',
 

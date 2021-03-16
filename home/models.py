@@ -2,9 +2,10 @@ from django.db import models
 
 from wagtail.core.models import Page
 from wagtail.images.edit_handlers import ImageChooserPanel
-from wagtail.admin.edit_handlers import FieldPanel, PageChooserPanel
+from wagtail.admin.edit_handlers import FieldPanel, PageChooserPanel, StreamFieldPanel, MultiFieldPanel
 
 from products.models import ProductCategoryPage
+from . import blocks
 
 
 class HomePage(Page):
@@ -50,3 +51,25 @@ class HomePage(Page):
         context = super().get_context(request, *args, **kwargs)
         context['product_categories'] = ProductCategoryPage.objects.all().specific()
         return context
+
+
+class GeneralPage(Page):
+    parent_page_types = ["HomePage", "GeneralPage"]
+    body = blocks.full_streamfield
+
+    comments = models.BooleanField(
+        default=False,
+        help_text="Should comments be allowed on the page?",
+        verbose_name='Enable comments?'
+    )
+
+    content_panels = Page.content_panels + [
+        StreamFieldPanel("body")
+    ]
+    promote_panels = Page.promote_panels + [
+        FieldPanel('comments')
+    ]
+
+    promote_panels = [
+        MultiFieldPanel(promote_panels, "Common page configuration")
+    ]
