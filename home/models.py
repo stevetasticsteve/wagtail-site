@@ -8,35 +8,38 @@ from . import blocks
 
 
 class HomePage(Page):
+    """
+    The home page of the website. Consists of a hero unit followed by optional streamfield.
+    """
     parent_page_types = ["wagtailcore.Page"]
     lead_text = models.CharField(
         max_length=140,
         blank=True,
-        help_text='Subheading text under the banner title',
+        help_text="Subheading text under the banner title",
     )
 
     banner_background_image = models.ForeignKey(
-        'wagtailimages.Image',
+        "wagtailimages.Image",
         blank=False,
         null=True,
-        related_name='+',
-        help_text='The banner background image',
+        related_name="+",
+        help_text="The banner background image",
         on_delete=models.SET_NULL,
     )
 
     button = models.ForeignKey(
-        'wagtailcore.Page',
+        "wagtailcore.Page",
         blank=True,
         null=True,
-        related_name='+',
-        help_text='Select an optional page to link to',
+        related_name="+",
+        help_text="Select an optional page to link to",
         on_delete=models.SET_NULL,
     )
     button_text = models.CharField(
         max_length=50,
-        default='Read More',
+        default="Read More",
         blank=False,
-        help_text='Button text',
+        help_text="Button text",
     )
 
     body = body = blocks.full_streamfield
@@ -51,20 +54,23 @@ class HomePage(Page):
 
 
 class GeneralPage(Page):
+    """
+    A flexible page with no particular defined structure or relation to other pages.
+    """
     parent_page_types = ["HomePage", "GeneralPage"]
     body = blocks.full_streamfield
 
     comments = models.BooleanField(
         default=False,
         help_text="Should comments be allowed on the page?",
-        verbose_name='Enable comments?'
+        verbose_name="Enable comments?"
     )
 
     content_panels = Page.content_panels + [
         StreamFieldPanel("body")
     ]
     promote_panels = Page.promote_panels + [
-        FieldPanel('comments')
+        FieldPanel("comments")
     ]
 
     promote_panels = [
