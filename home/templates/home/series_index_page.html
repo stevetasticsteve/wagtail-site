@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ page.get_parent.url }}"> {{ page.get_parent.title }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ page.title }}</li>
+    </ol>
+</nav>
+
+{{page.body}}
+
+<h3>Posts in this series</h3>
+<div class="list-group">
+
+    {% for child in child_pages %}
+
+    <a href="{{ child.url }}" class="list-group-item list-group-item-action aria-current="true">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{ child.title }}</h5>
+        </div>
+        <p class="mb-1">{{ child.summary }}</p>
+    </a>
+
+    {% endfor %}
+</div>
+{% endblock content %}
