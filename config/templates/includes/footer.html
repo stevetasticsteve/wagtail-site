@@ -16,26 +16,24 @@
         </figure>
     </div>
 
-    <div style="background-color: rgb(94, 94, 94);">
-        <div class="row mx-lg-n3">
-            <div class="px-lg-3 col-lg-3 col-md-6 col-sm-12 offset-2 my-4">
-                <div class="cc-footer-title"></div>
+    <div class="footer-box">
+        <div class="row">
+            <div class="col-sm-12 offset-2 my-4">
                 {% for item in menu %}
-                <a class="footer-links d-block" href="{% pageurl item %}" {% if item.open_in_new_tab %}target="_blank" {% endif %}>
-                    {{ item.title }}
-                </a>
+                <a href="{% pageurl item %}">{{ item.title }}</a>
                 {% endfor %}
             </div>
-            </div>
         </div>
-            <div class="text-center text-white p-3" style="background-color: rgb(94, 94, 94);">
-                {% if settings.site_settings.GlobalSiteSettings.site_copyright %}
-                © {{settings.site_settings.GlobalSiteSettings.site_copyright}}
-                {% else %}
-                © 2021 Stephen Stanley
 
-                {% endif %}
-            </div>
+
+        <div class="text-center text-white p-3">
+            {% if settings.site_settings.GlobalSiteSettings.site_copyright %}
+            © {{settings.site_settings.GlobalSiteSettings.site_copyright}}
+            {% else %}
+            © 2021 Stephen Stanley
+
+            {% endif %}
+        </div>
     </div>      
 
 

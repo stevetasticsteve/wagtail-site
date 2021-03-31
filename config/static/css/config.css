@@ -6,7 +6,16 @@
 	.navbar .nav-item .dropdown-menu{ margin-top:0; }
 }	
 
-a.footer-links {
+
+.footer-box{
+	background-color: rgb(94, 94, 94);
+}
+
+.footer-box a{
 	color: white;
 	text-decoration: none;
-}	
+}
+.footer-box a:hover{
+	color:rgb(210, 210, 210);
+	text-decoration: none;
+}
