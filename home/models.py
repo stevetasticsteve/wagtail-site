@@ -134,3 +134,22 @@ class SeriesPage(Page):
         context["related_pages"] = self.get_siblings().live().specific()
 
         return context
+
+
+class CalendarPage(Page):
+    """
+    A page to host a google calendar embed.
+    """
+    parent_page_types = ["HomePage"]
+    max_count = 1
+
+    calendar_url = models.CharField(
+        max_length=250,
+        help_text="Enter an embed link for a Google calendar.",
+        blank=False,
+        null=False,
+    )
+
+    content_panels = Page.content_panels + [
+        FieldPanel("calendar_url"),
+    ]
