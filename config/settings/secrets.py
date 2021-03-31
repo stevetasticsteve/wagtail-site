@@ -1,4 +1,0 @@
-GOOGLE_API_KEY = "AIzaSyA3P05L4lIDQTILBqz5XR_KE8hE8B6GdMg"
-EMAIL_HOST_USER = "stevestanleyweb@gmail.com"
-EMAIL_HOST_PASSWORD = "mYR76pmVMrqciMDemu3iDqeJTaChX6kRXVpJZP3T"
-EMAIL_HOST = 'smtp.gmail.com'
