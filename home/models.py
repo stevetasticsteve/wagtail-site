@@ -144,6 +144,8 @@ class CalendarPage(Page):
     parent_page_types = ["HomePage"]
     max_count = 1
 
+    body = blocks.full_streamfield
+
     calendar_url = models.CharField(
         max_length=250,
         help_text="Enter an embed link for a Google calendar.",
@@ -152,5 +154,6 @@ class CalendarPage(Page):
     )
 
     content_panels = Page.content_panels + [
+        StreamFieldPanel('body'),
         FieldPanel("calendar_url"),
     ]
