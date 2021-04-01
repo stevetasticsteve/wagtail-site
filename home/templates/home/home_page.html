@@ -5,7 +5,7 @@
 {% block banner %}
 {% image page.banner_background_image fill-1980x1000 as bg_img %}
 
-<div class="p-5 d-flex flex-column text-white rounded shadow bg-primary has-bg-img" 
+<div class="p-5 d-flex flex-column text-white rounded shadow has-bg-img" 
 {% if bg_img %}
 style="background-image: url('{{ bg_img.url }}'); background-size: cover; background-position: center; height: 60vh;">
 {% else %}

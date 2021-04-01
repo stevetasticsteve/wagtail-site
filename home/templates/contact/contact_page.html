@@ -14,10 +14,10 @@
             {{ page.intro|richtext }}
         </div>
         <hr>
-        <div class="d-none d-md-block">
+        <div class="d-none d-md-block my-0">
                 <picture>
                     {% image page.contact_page_image fill-580x335 as img %}
-                    <img src="{{ img.url }}" alt="{{ img.alt }}" style='width: 100%; height: auto;'>
+                    <img src="{{ img.url }}" alt="{{ img.alt }}" class="rounded shadow" style='width: 100%; height: auto;'>
                 </picture>
             </a>
         </div>
@@ -74,6 +74,9 @@
                 style='padding-left: 3.5rem; padding-right: 3.5rem;'>Submit</button>
         </form>
     </div>
+</div>
+<div>
+    {{ page.body }}
 </div>
 {% endblock %}
 
