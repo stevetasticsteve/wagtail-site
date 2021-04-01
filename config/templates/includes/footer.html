@@ -18,13 +18,49 @@
     </div>
 
     <div class="footer-box">
-        <div class="row">
-            <div class="col-sm-12 offset-2 my-4">
-                {% for item in menu %}
-                <ul>
-                    <a href="{% pageurl item %}">{{ item.title }}</a>
-                </ul>
-                {% endfor %}
+        <div class="container">
+            <div class="row">
+                <div class="col-sm p-4 text-center" id="footer-links">
+                    {% for item in menu %}
+                    <ul>
+                        <a href="{% pageurl item %}">{{ item.title }}</a>
+                    </ul>
+                    {% endfor %}
+                </div>
+                {% if settings.site_settings.FooterLink.footer_btn_page or settings.site_settings.FooterLink.footer_btn_link %}
+                <div class="col-sm p-4 text-center">
+                    <a class="btn btn-light btn-lg text-dark"
+                    href="{% if settings.site_settings.FooterLink.footer_btn_page %} 
+                    {{ settings.site_settings.FooterLink.footer_btn_page.url }}" 
+                    {% else %} {{ settings.site_settings.FooterLink.footer_btn_link }}" target="_blank" 
+                    {% endif %}>
+                    {{ settings.site_settings.FooterLink.footer_btn_text }}
+                </a>
+                </div>
+                {% endif %}
+
+                <div class="col-sm p-4 text-center">
+                    {% if settings.site_settings.SocialMediaSettings.facebook %}
+                    <a href="{{ settings.site_settings.SocialMediaSettings.facebook }}" class="footer-social-icon">
+                        <img src="{% static 'images/facebook.svg' %}" alt="Facebook">
+                    </a>
+                    {% endif %}
+                    {% if settings.site_settings.SocialMediaSettings.twitter %}
+                    <a href="{{ settings.site_settings.SocialMediaSettings.twitter }}" class="footer-social-icon">
+                        <img src="{% static 'images/twitter.svg' %}" alt="Twitter">
+                    </a>
+                    {% endif %}
+                    {% if settings.site_settings.SocialMediaSettings.instagram %}
+                    <a href="{{ settings.site_settings.SocialMediaSettings.instagram }}" class="footer-social-icon">
+                        <img src="{% static 'images/instagram.svg' %}" alt="Instagram">
+                    </a>
+                    {% endif %}
+                    {% if settings.site_settings.SocialMediaSettings.youtube %}
+                    <a href="{{ settings.site_settings.SocialMediaSettings.youtube }}" class="footer-social-icon">
+                        <img src="{% static 'images/youtube.svg' %}" alt="YouTube">
+                    </a>
+                    {% endif %}
+                </div>
             </div>
         </div>
 

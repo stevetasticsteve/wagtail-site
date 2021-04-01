@@ -19,6 +19,17 @@
 	color:rgb(210, 210, 210);
 	text-decoration: none;
 }
+#footer-links {
+	column-count: 2;
+    column-width: 25%;
+    column-gap: 0.25em;
+}
+
+.footer-social-icon {
+  display: inline-block;
+  margin-right: 1em;
+}
+
 
 .responsiveCal { 
 position: relative; padding-bottom: 75%; height: 0; overflow: hidden;
