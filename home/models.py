@@ -10,6 +10,7 @@ class HomePage(Page):
     """
     The home page of the website. Consists of a hero unit followed by optional streamfield.
     """
+    max_count = 1
     parent_page_types = ["wagtailcore.Page"]
     lead_text = models.CharField(
         max_length=140,
