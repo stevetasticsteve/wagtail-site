@@ -11,11 +11,11 @@ from wagtail.core.fields import RichTextField
 from home.blocks import full_streamfield
 
 FORM_FIELD_CHOICES = (
-    ('singleline', _('Single line text')),
-    ('multiline', _('Multi-line text')),
-    ('email', _('Email')),
-    ('url', _('URL')),
-    ('radio', _('Radio buttons')),
+    ("singleline", _("Single line text")),
+    ("multiline", _("Multi-line text")),
+    ("email", _("Email")),
+    ("url", _("URL")),
+    ("radio", _("Radio buttons")),
 )
 
 
@@ -33,9 +33,7 @@ class CustomAbstractFormField(AbstractFormField):
 
 class FormField(CustomAbstractFormField):
     page = ParentalKey(
-        "ContactPage",
-        on_delete=models.CASCADE,
-        related_name='form_fields'
+        "ContactPage", on_delete=models.CASCADE, related_name="form_fields"
     )
 
 
@@ -49,7 +47,7 @@ class ContactPage(AbstractEmailForm):
     intro = RichTextField(
         blank=True,
         features=["bold", "link", "ol", "li"],
-        help_text="Text that will appear directly under the page title."
+        help_text="Text that will appear directly under the page title.",
     )
     thank_you_text = RichTextField(
         blank=True,
@@ -68,16 +66,20 @@ class ContactPage(AbstractEmailForm):
         blank=False,
         on_delete=models.SET_NULL,
         help_text="Image will fill the left column and be cropped to 580px by 355px",
-        related_name="+"
+        related_name="+",
     )
     body = full_streamfield
 
     content_panels = AbstractEmailForm.content_panels + [
         FieldPanel("intro"),
         ImageChooserPanel("contact_page_image"),
-        InlinePanel("form_fields", label='Form Fields', help_text="Build a form here, will fill the right column."),
+        InlinePanel(
+            "form_fields",
+            label="Form Fields",
+            help_text="Build a form here, will fill the right column.",
+        ),
         FieldPanel("thank_you_text"),
-        #FieldPanel("from_address",
+        # FieldPanel("from_address",
         FieldPanel("to_address", help_text="Email address message should go to."),
         FieldPanel("subject"),
         StreamFieldPanel("body"),

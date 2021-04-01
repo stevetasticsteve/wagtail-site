@@ -18,8 +18,9 @@ def get_pictures(collection_id):
 
 @register.simple_tag
 def generate_random_id():
-    value = ''.join(random.choice(string.ascii_letters + string.digits)
-                    for n in range(20))
+    value = "".join(
+        random.choice(string.ascii_letters + string.digits) for n in range(20)
+    )
     return "cr-{}".format(value)
 
 
@@ -32,7 +33,9 @@ def settings_value(name):
 def get_embed_url_with_parameters(url):
     if "youtube.com" in url or "youtu.be" in url:
         # Get video id from URL
-        regex = r"(?:https:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)"
+        regex = (
+            r"(?:https:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)"
+        )
         embed_url = re.sub(
             regex, r"https://www.youtube.com/embed/\1", url
         )  # Append video id to desired URL

@@ -2,7 +2,12 @@ from django.db import models
 
 from wagtail.core.models import Page
 from wagtail.images.edit_handlers import ImageChooserPanel
-from wagtail.admin.edit_handlers import FieldPanel, PageChooserPanel, StreamFieldPanel, MultiFieldPanel
+from wagtail.admin.edit_handlers import (
+    FieldPanel,
+    PageChooserPanel,
+    StreamFieldPanel,
+    MultiFieldPanel,
+)
 from . import blocks
 
 
@@ -10,6 +15,7 @@ class HomePage(Page):
     """
     The home page of the website. Consists of a hero unit followed by optional streamfield.
     """
+
     max_count = 1
     parent_page_types = ["wagtailcore.Page"]
     lead_text = models.CharField(
@@ -57,31 +63,27 @@ class GeneralPage(Page):
     """
     A flexible page with no particular defined structure or relation to other pages.
     """
+
     parent_page_types = ["HomePage", "GeneralPage"]
     body = blocks.full_streamfield
 
     comments = models.BooleanField(
         default=False,
         help_text="Should comments be allowed on the page?",
-        verbose_name="Enable comments?"
+        verbose_name="Enable comments?",
     )
 
-    content_panels = Page.content_panels + [
-        StreamFieldPanel("body")
-    ]
-    promote_panels = Page.promote_panels + [
-        FieldPanel("comments")
-    ]
+    content_panels = Page.content_panels + [StreamFieldPanel("body")]
+    promote_panels = Page.promote_panels + [FieldPanel("comments")]
 
-    promote_panels = [
-        MultiFieldPanel(promote_panels, "Common page configuration")
-    ]
+    promote_panels = [MultiFieldPanel(promote_panels, "Common page configuration")]
 
 
 class SeriesIndexPage(Page):
     """
     A page to act as a container for a series. Can include an overview of the series. Links to child pages automatically shown.
     """
+
     parent_page_types = ["GeneralPage"]
     body = blocks.full_streamfield
 
@@ -101,6 +103,7 @@ class SeriesPage(Page):
     """
     A flexible page for varied content that automatically links to sibling pages belonging to the same family. Designed for creating a series of pages on the same subject.
     """
+
     parent_page_types = ["SeriesIndexPage"]
 
     summary = models.CharField(
@@ -114,20 +117,16 @@ class SeriesPage(Page):
     comments = models.BooleanField(
         default=True,
         help_text="Should comments be allowed on the page?",
-        verbose_name="Enable comments?"
+        verbose_name="Enable comments?",
     )
 
     content_panels = Page.content_panels + [
         FieldPanel("summary"),
         StreamFieldPanel("body"),
     ]
-    promote_panels = Page.promote_panels + [
-        FieldPanel("comments")
-    ]
+    promote_panels = Page.promote_panels + [FieldPanel("comments")]
 
-    promote_panels = [
-        MultiFieldPanel(promote_panels, "Common page configuration")
-    ]
+    promote_panels = [MultiFieldPanel(promote_panels, "Common page configuration")]
 
     def get_context(self, request, *args, **kwargs):
         """Adding custom stuff to our context."""
@@ -141,6 +140,7 @@ class CalendarPage(Page):
     """
     A page to host a google calendar embed.
     """
+
     parent_page_types = ["HomePage"]
     max_count = 1
 
@@ -154,6 +154,6 @@ class CalendarPage(Page):
     )
 
     content_panels = Page.content_panels + [
-        StreamFieldPanel('body'),
+        StreamFieldPanel("body"),
         FieldPanel("calendar_url"),
     ]
