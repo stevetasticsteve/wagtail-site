@@ -2,7 +2,9 @@
 
 {% block content %}
 
+{{ page.body }}
+
 <div class="responsiveCal" id="google-calendar">
-    {{page.calendar_url|safe}}
+    {{ page.calendar_url|safe }}
 </div>
 {% endblock content %}
