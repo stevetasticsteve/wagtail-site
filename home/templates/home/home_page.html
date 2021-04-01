@@ -5,7 +5,7 @@
 {% block banner %}
 {% image page.banner_background_image fill-1980x1000 as bg_img %}
 
-<div class="p-5 d-flex flex-column text-white rounded shadow has-bg-img" 
+<div class="p-5 d-flex flex-column justify-content-center text-white rounded shadow has-bg-img" 
 {% if bg_img %}
 style="background-image: url('{{ bg_img.url }}'); background-size: cover; background-position: center; height: 60vh;">
 {% else %}
@@ -14,9 +14,9 @@ style="background-image: url('https://via.placeholder.com/1500x200')">
 
     <div class="container">
             <div class="col-xl-8 col-lg-9">
-                <h1 class="display-3 cc-home-banner-title">{{ page.title }}</h1>
+                <h1 class="display-1">{{ page.title }}</h1>
                 {% if page.lead_text %}
-                <p class="lead">{{ page.lead_text }}</p>
+                <h2>{{ page.lead_text }}</h2>
                 {% endif %}
 
                 {% if page.button %}
