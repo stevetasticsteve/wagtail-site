@@ -4,7 +4,7 @@
     {% if self.card_group_heading %}
     <h2>{{ self.card_group_heading }}</h2>
     {% endif %}
-    <div class="row row-cols-1 row-cols-md-4 g-2">
+    <div class="row row-cols-1 row-cols-md-4 g-2 justify-content-center">
         {% for block in self.content %}
         {% include_block block %}
         {% endfor %}

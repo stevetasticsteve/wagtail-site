@@ -210,6 +210,9 @@ class CardBlock(blocks.StructBlock):
     card_text = blocks.TextBlock(
         max_length=400,
         help_text="Short desription of page.",
+        required=False,
+        blank=True,
+        null=True,
     )
     button_text = blocks.CharBlock(
         max_length=20,
