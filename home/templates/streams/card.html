@@ -1,7 +1,7 @@
 {% load wagtailimages_tags %}
 
 {% image self.card_image fill-900x600 as image %}
-<div class="col">
+<div class="col p-2">
     <div class="card h-100" style="max-width: 24rem;">
         <img src="{{ image.url }}" class="card-img-top" alt="{{ image.alt }}">
         <div class="card-body d-flex flex-column">
