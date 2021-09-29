@@ -67,14 +67,14 @@ class GeneralPage(Page):
     parent_page_types = ["HomePage", "GeneralPage"]
     body = blocks.full_streamfield
 
-    comments = models.BooleanField(
+    enable_comments = models.BooleanField(
         default=False,
         help_text="Should comments be allowed on the page?",
         verbose_name="Enable comments?",
     )
 
     content_panels = Page.content_panels + [StreamFieldPanel("body")]
-    promote_panels = Page.promote_panels + [FieldPanel("comments")]
+    promote_panels = Page.promote_panels + [FieldPanel("enable_comments")]
 
     promote_panels = [MultiFieldPanel(promote_panels, "Common page configuration")]
 
@@ -114,7 +114,7 @@ class SeriesPage(Page):
     )
     body = blocks.full_streamfield
 
-    comments = models.BooleanField(
+    enable_comments = models.BooleanField(
         default=True,
         help_text="Should comments be allowed on the page?",
         verbose_name="Enable comments?",
@@ -124,7 +124,7 @@ class SeriesPage(Page):
         FieldPanel("summary"),
         StreamFieldPanel("body"),
     ]
-    promote_panels = Page.promote_panels + [FieldPanel("comments")]
+    promote_panels = Page.promote_panels + [FieldPanel("enable_comments")]
 
     promote_panels = [MultiFieldPanel(promote_panels, "Common page configuration")]
 
